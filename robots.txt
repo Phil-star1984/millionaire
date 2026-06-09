@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://phil-star1984.github.io/millionaire/sitemap.xml
