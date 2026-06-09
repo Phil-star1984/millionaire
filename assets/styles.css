@@ -6,8 +6,8 @@
   --violet:#6B2CE6;
   --violet-2:#8B5CF6;
   --magenta:#D946EF;
-  --gold:#F6C90E;
-  --gold-2:#FFE58A;
+  --gold:#C8A23A;
+  --gold-2:#F1D27A;
   --cream:#FFF9EC;
   --paper:#FFFCF5;
   --warm:#F6EFE3;
@@ -154,4 +154,39 @@
   .hero-showcase{height:620px}
   .hero-slide-image{object-position:64% center}
   .navin{gap:12px}
+}
+
+
+/* Hero copy alignment + premium gold refinement. */
+.hero-slide-content{justify-content:flex-start;text-align:left}
+.hero-panel{align-items:flex-start;text-align:left}
+.hero-panel h1,.hero-panel .lead{margin-left:0;text-align:left}
+.hero-actions{justify-content:flex-start}
+.hero-panel h1 span{
+  color:var(--gold-2);
+  background:linear-gradient(135deg,#fff2b0 0%,#d2aa45 42%,#8a641c 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.eyebrow.gold{
+  background:rgba(200,162,58,.16);
+  border-color:rgba(200,162,58,.36);
+  color:#74541b;
+}
+
+
+/* Align hero copy with the main wordmark column and keep the block lower. */
+.hero-slide-content{
+  width:100%;
+  justify-self:center;
+  align-items:flex-end;
+  padding-bottom:72px;
+}
+.hero-panel{max-width:700px}
+.hero-panel h1{font-size:clamp(44px,6vw,80px);line-height:.98}
+.hero-panel .lead{font-size:clamp(18px,1.8vw,22px)}
+@media(max-width:920px){
+  .hero-slide-content{width:100%;padding-bottom:38px}
+  .hero-panel h1{font-size:clamp(40px,12vw,64px)}
 }
