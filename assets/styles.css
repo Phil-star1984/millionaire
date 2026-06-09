@@ -6,8 +6,8 @@
   --violet:#6B2CE6;
   --violet-2:#8B5CF6;
   --magenta:#D946EF;
-  --gold:#D4AF37;
-  --gold-2:#FFD76A;
+  --gold:#D9B23F;
+  --gold-2:#FFE082;
   --cream:#FFF9EC;
   --paper:#FFFCF5;
   --warm:#F6EFE3;
@@ -145,14 +145,14 @@
 @media(max-width:920px){
   .brand{font-size:clamp(25px,7vw,34px)}
   .hero-showcase{height:clamp(520px,78vw,680px)}
-  .hero-slide-image{object-position:48% center}
+  .hero-slide-image{object-position:74% center}
   .hero-slide-shade{background:linear-gradient(180deg,rgba(18,4,30,.08) 0%,rgba(18,4,30,.42) 38%,rgba(18,4,30,.88) 100%)}
   .hero-slide-content{align-items:flex-end;padding-top:36px;padding-bottom:36px}
   .hero-panel{padding:0;background:transparent}
 }
 @media(max-width:560px){
   .hero-showcase{height:620px}
-  .hero-slide-image{object-position:44% center}
+  .hero-slide-image{object-position:82% center}
   .navin{gap:12px}
 }
 
@@ -164,14 +164,14 @@
 .hero-actions{justify-content:flex-start}
 .hero-panel h1 span{
   color:var(--gold-2);
-  background:linear-gradient(135deg,#fff3b0 0%,#ffd76a 32%,#d4af37 62%,#b88922 100%);
+  background:linear-gradient(135deg,#fff4b8 0%,#ffe082 30%,#d9b23f 64%,#c0922d 100%);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
 }
 .eyebrow.gold{
-  background:rgba(212,175,55,.18);
-  border-color:rgba(212,175,55,.42);
+  background:rgba(217,178,63,.18);
+  border-color:rgba(217,178,63,.42);
   color:#806019;
 }
 
