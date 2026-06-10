@@ -18,4 +18,3 @@ Dann öffnen: http://127.0.0.1:8130/
 - `/ueber-phil/` About-Seite
 - `/tools/` kuratierte AI-Tools
 - `/hier-starten/` Einsteiger-Guide
-- `/ressourcen/` Ressourcen-Seite
