@@ -410,7 +410,8 @@ img {
   font-weight: 850;
 }
 .article {
-  max-width: 860px;
+  width: 100%;
+  max-width: var(--max);
   margin: 0 auto;
   padding: 74px 24px;
 }
@@ -422,6 +423,9 @@ img {
   overflow: hidden;
   margin: 30px 0 12px;
   box-shadow: var(--shadow);
+}
+.article .hero-image img {
+  width: 100%;
 }
 .article figcaption {
   color: var(--muted);
@@ -702,7 +706,7 @@ img {
 }
 .hero-showcase {
   min-height: 0;
-  height: clamp(590px, 58vw, 760px);
+  height: clamp(560px, 55vw, 720px);
   background: #12041e;
 }
 .hero-slider,
@@ -757,6 +761,14 @@ img {
 }
 .hero-panel .btn {
   text-shadow: none;
+}
+.hero-panel .btn.primary {
+  position: relative;
+  overflow: visible;
+  margin: 2px;
+  padding-inline: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 18px 42px rgba(107, 44, 230, 0.36);
 }
 @media (max-width: 920px) {
   .brand {
@@ -842,8 +854,8 @@ img {
   width: 100%;
   justify-self: center;
   align-items: flex-end;
-  padding-top: 92px;
-  padding-bottom: 78px;
+  padding-top: 78px;
+  padding-bottom: 66px;
 }
 .hero-panel {
   max-width: 700px;
@@ -902,6 +914,11 @@ img {
 .blog-home-lead {
   margin: 0 0 34px;
   max-width: 900px;
+}
+.blog-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
 }
 .blog-showcase {
   display: grid;
