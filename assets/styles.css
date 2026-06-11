@@ -186,6 +186,9 @@ img {
 .links a:hover {
   color: var(--violet);
 }
+.breadcrumbs {
+  display: none;
+}
 .btn {
   display: inline-flex;
   align-items: center;
@@ -522,7 +525,7 @@ img {
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.72);
 }
-@media (max-width: 920px) {
+@media (max-width: 768px) {
   .topbar {
     position: sticky;
     top: 0;
@@ -569,44 +572,43 @@ img {
     display: none;
   }
   .links {
+    display: none;
+  }
+  .breadcrumbs {
     order: 3;
     flex: 0 0 100%;
     display: flex;
-    gap: 0;
+    align-items: center;
+    gap: 8px;
     overflow-x: auto;
     padding: 4px 2px 2px;
     color: var(--muted);
     font-size: 13px;
     font-weight: 850;
+    white-space: nowrap;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
-  .links::-webkit-scrollbar {
+  .breadcrumbs::-webkit-scrollbar {
     display: none;
   }
-  .links a {
+  .breadcrumbs a,
+  .breadcrumbs span {
     flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
-    padding: 6px 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    color: var(--violet-950);
-    box-shadow: none;
     line-height: 1;
   }
-  .links a:not(:last-child)::after {
-    content: "›";
-    margin: 0 9px;
-    color: rgba(107, 44, 230, 0.48);
-    font-weight: 900;
+  .breadcrumbs a {
+    color: var(--violet-950);
   }
-  .links a[aria-current="page"] {
+  .breadcrumbs a[aria-current="page"],
+  .breadcrumbs span[aria-current="page"] {
     color: var(--violet);
   }
-  .links a[aria-current="page"]::after {
-    display: inline-flex;
+  .breadcrumbs .sep {
+    color: rgba(107, 44, 230, 0.48);
+    font-weight: 900;
   }
   .hero-grid,
   .grid2,
