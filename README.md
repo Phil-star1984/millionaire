@@ -1,6 +1,6 @@
 # MillionAIre
 
-Statischer GitHub-Pages-Blog von Phil Splash.
+Statischer GitHub-Pages-Blog
 
 ## Lokal prüfen
 
