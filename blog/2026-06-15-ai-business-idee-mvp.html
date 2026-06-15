@@ -49,18 +49,19 @@
       </section>
 
       <section class="mission-card" aria-labelledby="mission-title">
-        <div class="mission-label">Praxis</div>
-        <h2 id="mission-title">⚡ 30-Minuten-Mission</h2>
-        <p><strong>Ziel:</strong> Am Ende hast du eine Zielgruppe, einen Pain Point, ein Mini-Angebot und einen nächsten Testschritt.</p>
+        <div class="mission-label">MillionAIre Praxis</div>
+        <h2 id="mission-title">⚡ AI-MVP-Move</h2>
+        <p><strong>30-Minuten-Ergebnis:</strong> eine Zielgruppe, ein Pain Point, ein Mini-Angebot und ein nächster Testschritt.</p>
         <ol class="mission-steps">
-          <li><strong>5 Min:</strong> Notiere 3 Skills, 3 Interessen und 3 Probleme, die du bei anderen beobachtest.</li>
-          <li><strong>10 Min:</strong> Kopiere den Prompt unten in ChatGPT oder Claude.</li>
-          <li><strong>10 Min:</strong> Wähle die Idee mit dem besten Mix aus wenig Aufwand, klarem Nutzen und möglicher Zahlungsbereitschaft.</li>
-          <li><strong>5 Min:</strong> Schreibe eine Person an und frage, ob das Problem für sie relevant ist.</li>
+          <li><strong>5 Min:</strong> 3 Skills, 3 Interessen und 3 beobachtete Probleme notieren.</li>
+          <li><strong>10 Min:</strong> Prompt öffnen, kopieren und in ChatGPT oder Claude einfügen.</li>
+          <li><strong>10 Min:</strong> eine MVP-Idee nach Aufwand, Nutzen und Zahlungsbereitschaft auswählen.</li>
+          <li><strong>5 Min:</strong> eine passende Person nach echtem Interesse fragen.</li>
         </ol>
-        <div class="prompt-box">
-          <div class="prompt-head"><span>📋 Copy-Paste-Prompt</span><span class="copy-hint">kopieren</span></div>
-          <pre><code>Du bist mein AI-Business-Sparringspartner.
+        <details class="prompt-box" open>
+          <summary class="prompt-head"><span>📋 MillionAIre Prompt</span><span class="copy-hint">aufklappen · kopieren</span></summary>
+          <button class="copy-prompt" type="button" data-copy-target="mvp-prompt">Prompt kopieren</button>
+          <pre><code id="mvp-prompt">Du bist mein AI-Business-Sparringspartner.
 
 Meine Skills: [3 Skills]
 Meine Interessen: [3 Interessen]
@@ -69,7 +70,7 @@ Beobachtete Probleme: [3 Probleme]
 Finde daraus 3 kleine MVP-Ideen.
 Bewerte jede Idee nach Zielgruppe, Pain Point, Aufwand, Nutzen und Zahlungsbereitschaft.
 Empfiehl mir eine Idee und formuliere ein Mini-Angebot in einem Satz.</code></pre>
-        </div>
+        </details>
       </section>
 
       <section class="article-block">
@@ -87,5 +88,21 @@ Empfiehl mir eine Idee und formuliere ein Mini-Angebot in einem Satz.</code></pr
       </section>
     </main>
     <footer class="footer"><div class="wrap"><strong>MillionAIre · Phil Splash</strong><span><a href="index.html">Blog</a> · <a href="../index.html">Home</a> · <a href="https://millionpainter.de/">MillionPainter.de</a> · <a href="../impressum/">Impressum</a></span></div></footer>
+    <script>
+      document.querySelectorAll('.copy-prompt').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          if (!target) return;
+          try {
+            await navigator.clipboard.writeText(target.innerText.trim());
+            const old = button.textContent;
+            button.textContent = 'Kopiert ✓';
+            setTimeout(() => { button.textContent = old; }, 1800);
+          } catch (error) {
+            button.textContent = 'Markieren & kopieren';
+          }
+        });
+      });
+    </script>
   </body>
 </html>
