@@ -526,63 +526,118 @@ img {
 .prompt-box {
   position: relative;
   z-index: 1;
-  border-radius: 22px;
+  border-radius: 24px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(10, 5, 18, 0.52);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 224, 130, 0.28);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(13, 6, 24, 0.78);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
+.prompt-box > summary,
 .prompt-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 14px;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--gold-2);
-  font-weight: 850;
+  min-height: 56px;
+  padding: 14px 16px 14px 18px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--violet-950);
+  font-weight: 900;
   cursor: pointer;
   list-style: none;
+  border-bottom: 1px solid rgba(255, 224, 130, 0.16);
+  transition: background 0.18s ease, color 0.18s ease;
 }
+.prompt-box > summary:hover,
+.prompt-head:hover {
+  background: #fff;
+  color: var(--violet);
+}
+.prompt-box > summary:focus-visible,
+.prompt-head:focus-visible,
+.copy-prompt:focus-visible {
+  outline: 3px solid rgba(255, 224, 130, 0.62);
+  outline-offset: 3px;
+}
+.prompt-box > summary::-webkit-details-marker,
 .prompt-head::-webkit-details-marker {
   display: none;
 }
+.prompt-box > summary::after,
 .prompt-head::after {
-  content: "⌄";
+  content: "";
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
   margin-left: auto;
-  color: #fff;
-  font-size: 20px;
-  line-height: 1;
-  transition: transform 0.18s ease;
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(107, 44, 230, 0.12), rgba(217, 70, 239, 0.12)),
+    url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%236b2ce6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px 18px no-repeat;
+  transition: transform 0.18s ease, background-color 0.18s ease;
 }
+.prompt-box[open] > summary::after,
 .prompt-box[open] .prompt-head::after {
   transform: rotate(180deg);
 }
 .copy-hint {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  color: rgba(49, 35, 62, 0.62);
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 .copy-prompt {
-  position: relative;
-  z-index: 1;
-  margin: 14px 16px 0;
-  padding: 9px 13px;
-  border: 1px solid rgba(255, 224, 130, 0.45);
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-2));
-  color: var(--violet-950);
-  font-weight: 850;
+  position: absolute;
+  z-index: 3;
+  top: 72px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 253, 246, 0.82);
   cursor: pointer;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
 }
 .copy-prompt:hover {
   transform: translateY(-1px);
+  border-color: rgba(255, 224, 130, 0.44);
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+.copy-prompt svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+.copy-check {
+  display: none;
+  color: var(--gold-2);
+  font-weight: 950;
+  font-size: 18px;
+  line-height: 1;
+}
+.copy-prompt.copied .copy-icon {
+  display: none;
+}
+.copy-prompt.copied .copy-check {
+  display: block;
 }
 .prompt-box pre {
   margin: 0;
-  padding: 14px 16px 18px;
+  padding: 22px 64px 22px 18px;
   overflow-x: auto;
   white-space: pre-wrap;
   user-select: all;
@@ -591,7 +646,33 @@ img {
   color: #fffdf6;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   font-size: 15px;
-  line-height: 1.55;
+  line-height: 1.6;
+}
+@media (max-width: 560px) {
+  .prompt-box > summary,
+  .prompt-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+    padding-right: 52px;
+  }
+  .prompt-box > summary::after,
+  .prompt-head::after {
+    position: absolute;
+    top: 17px;
+    right: 16px;
+  }
+  .copy-hint {
+    margin-left: 0;
+    font-size: 11px;
+  }
+  .copy-prompt {
+    top: 82px;
+  }
+  .prompt-box pre {
+    padding-right: 18px;
+    padding-top: 56px;
+  }
 }
 .cta-band {
   border-radius: 34px;

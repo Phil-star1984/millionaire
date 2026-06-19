@@ -10,7 +10,7 @@
     <meta property="og:description" content="Kompakter Guide für bessere Business-Ideen, AI-Sparring und einen ersten marktnahen MVP-Test." />
     <meta property="og:image" content="../assets/blog-2026-06-15-ai-business-idee-mvp.webp" />
     <meta property="og:type" content="article" />
-    <link rel="stylesheet" href="../assets/styles.css?v=20260615-mission-box" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260619-prompt-ui" />
   </head>
   <body>
     <div class="topbar"><div class="wrap"><span>MillionAIre · AI, Kreativität & Technik für klare Wirkung</span><span><span class="topbar-contact">Kontakt</span> · <strong>0176 20130451</strong></span></div></div>
@@ -60,7 +60,7 @@
         </ol>
         <details class="prompt-box" open>
           <summary class="prompt-head"><span>📋 MillionAIre Prompt</span><span class="copy-hint">aufklappen · kopieren</span></summary>
-          <button class="copy-prompt" type="button" data-copy-target="mvp-prompt">Prompt kopieren</button>
+          <button class="copy-prompt" type="button" data-copy-target="mvp-prompt" aria-label="Prompt kopieren" title="Prompt kopieren"><span class="copy-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8 8.5C8 7.12 9.12 6 10.5 6H18c1.1 0 2 .9 2 2v7.5c0 1.38-1.12 2.5-2.5 2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="4" y="10" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="copy-check" aria-hidden="true">✓</span></button>
           <pre><code id="mvp-prompt">Du bist mein AI-Business-Sparringspartner.
 
 Meine Skills: [3 Skills]
@@ -95,11 +95,17 @@ Empfiehl mir eine Idee und formuliere ein Mini-Angebot in einem Satz.</code></pr
           if (!target) return;
           try {
             await navigator.clipboard.writeText(target.innerText.trim());
-            const old = button.textContent;
-            button.textContent = 'Kopiert ✓';
-            setTimeout(() => { button.textContent = old; }, 1800);
+            button.classList.add('copied');
+            button.setAttribute('aria-label', 'Prompt kopiert');
+            button.setAttribute('title', 'Prompt kopiert');
+            setTimeout(() => {
+              button.classList.remove('copied');
+              button.setAttribute('aria-label', 'Prompt kopieren');
+              button.setAttribute('title', 'Prompt kopieren');
+            }, 1600);
           } catch (error) {
-            button.textContent = 'Markieren & kopieren';
+            button.setAttribute('aria-label', 'Prompt markieren und kopieren');
+            button.setAttribute('title', 'Prompt markieren und kopieren');
           }
         });
       });

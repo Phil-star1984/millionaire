@@ -10,7 +10,7 @@
     <meta property="og:description" content="Wer nur Stunden verkauft, verhandelt schnell über Zeit. Wer Ergebnisse, Grenzen und Pakete sichtbar macht, baut finanzielle Handlungsfähigkeit auf." />
     <meta property="og:image" content="../assets/blog-2026-06-18-preisanker-kreative.webp" />
     <meta property="og:type" content="article" />
-    <link rel="stylesheet" href="../assets/styles.css?v=20260615-mission-box" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260619-prompt-ui" />
   </head>
   <body>
     <div class="topbar"><div class="wrap"><span>MillionAIre · AI, Kreativität & Technik für klare Wirkung</span><span><span class="topbar-contact">Kontakt</span> · <strong>0176 20130451</strong></span></div></div>
@@ -46,8 +46,8 @@
           <li><strong>5 Minuten:</strong> Formuliere eine Premium-Version mit mehr Verantwortung — und eine Frage, die du vor jedem Angebot stellen musst.</li>
         </ol>
         <details class="prompt-box" open>
-          <summary>📋 MillionAIre Prompt</summary>
-          <button class="copy-prompt" type="button" data-copy-target="preisanker-prompt">Prompt kopieren</button>
+          <summary class="prompt-head"><span>📋 MillionAIre Prompt</span><span class="copy-hint">aufklappen · kopieren</span></summary>
+          <button class="copy-prompt" type="button" data-copy-target="preisanker-prompt" aria-label="Prompt kopieren" title="Prompt kopieren"><span class="copy-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8 8.5C8 7.12 9.12 6 10.5 6H18c1.1 0 2 .9 2 2v7.5c0 1.38-1.12 2.5-2.5 2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="4" y="10" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="copy-check" aria-hidden="true">✓</span></button>
           <pre><code id="preisanker-prompt">Du bist mein nüchterner Pricing-Sparringspartner für kreative Selbstständigkeit. Ich beschreibe dir eine Leistung, meine Zielgruppe, typische Probleme, groben Aufwand und Risiken. Hilf mir, daraus drei klare Angebotskarten zu bauen: Klar, Plus, Premium. Keine Einkommensversprechen, keine aggressive Verkaufssprache. Ergebnis: je Paket 1 Outcome, 3 Lieferbestandteile, 2 Grenzen, 1 Briefing-Frage und 1 Risiko, das ich vor dem Angebot klären muss.</code></pre>
         </details>
       </section>
@@ -64,9 +64,15 @@
         button.addEventListener('click', async () => {
           const target = document.getElementById(button.dataset.copyTarget);
           if (!target) return;
-          await navigator.clipboard.writeText(target.innerText);
-          button.innerText = 'Kopiert';
-          setTimeout(() => (button.innerText = 'Prompt kopieren'), 1600);
+          await navigator.clipboard.writeText(target.innerText.trim());
+          button.classList.add('copied');
+          button.setAttribute('aria-label', 'Prompt kopiert');
+          button.setAttribute('title', 'Prompt kopiert');
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.setAttribute('aria-label', 'Prompt kopieren');
+            button.setAttribute('title', 'Prompt kopieren');
+          }, 1600);
         });
       });
     </script>
